@@ -1,15 +1,11 @@
-import React, { useState } from 'react'
-import './Sidebar.css'
+import React, { useState } from 'react';
+import './Sidebar.css';
 import { Menu } from 'lucide-react';
 import { Plus } from 'lucide-react';
 import { MessageSquare } from 'lucide-react';
 import { FileQuestionMark } from 'lucide-react';
 import { History } from 'lucide-react';
 import { Settings } from 'lucide-react';
-
-
-
-
 
 const Sidebar = () => {
     const [extended, setExtended] = useState(false)
