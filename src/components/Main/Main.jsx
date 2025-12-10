@@ -1,6 +1,10 @@
 import React from 'react';
 import './Main.css'
 import {CircleUserRound} from 'lucide-react';
+import {Compass} from 'lucide-react';
+import {Lightbulb} from 'lucide-react';
+import {MessageSquare} from 'lucide-react';
+import {CodeXml} from 'lucide-react';
 
 const Main = () => {
   return (
@@ -8,6 +12,30 @@ const Main = () => {
         <div className='nav'>
         <p>Gemini</p>
         <CircleUserRound />
+        </div>
+        <div className="main-container">
+          <div className="greet">
+            <p><span>Hello, dev.</span></p> 
+            <p>How can i help you today</p>
+          </div>
+          <div className="cards">
+            <div className="card">
+              <p>suggest beautful places to see on an upcoming road trip</p>
+              <Compass className='cardel'/>
+            </div>
+            <div className="card">
+              <p>AI that suggests dinner based on your fridge</p>
+              <Lightbulb className='cardel'/>
+            </div>
+            <div className="card">
+              <p>AI that makes 5-min workout plans</p>
+              <MessageSquare className='cardel'/>
+            </div>
+            <div className="card">
+              <p>List fun challenges to try this week</p>
+              <CodeXml className='cardel'/>
+            </div>
+          </div>
         </div>
     </div>
       
