@@ -1,15 +1,25 @@
-import { GoogleGenAI } from "@google/genai";
+// src/config/gemini.js
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const ai = new GoogleGenAI({
-    apikey:"AIzaSyDhV3iZYE9NxrFVQn6PZZ5vSKTmttrd_o8", 
-});
-
-async function main() {
-  const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash",
-    contents: "Explain how AI works in a few words",
-  });
-  console.log(response.text);
+// FIX: Only the actual key should be inside the quotes
+const genAI = new GoogleGenerativeAI("AIzaSyAuHS0l6rzid63InVGPprwST9H-AWuVW98");
+  
+async function runChat(prompt) {
+  try {
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+    
+    // This line prints the response to the console
+    console.log(text);
+    
+    return text;
+  } catch (err) {
+    // This will now catch actual errors like network issues
+    console.error("Gemini error:", err);
+    return null;
+  }
 }
 
-main();
+export default runChat;
