@@ -2,7 +2,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // FIX: Only the actual key should be inside the quotes
-const genAI = new GoogleGenerativeAI("AIzaSyAuHS0l6rzid63InVGPprwST9H-AWuVW98");
+const genAI = new GoogleGenerativeAI("AIzaSyD5UbSO01ZYZst8BH3entaJyHbkrqrCcGI");
   
 async function runChat(prompt) {
   try {

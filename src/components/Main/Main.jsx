@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Main.css'
 import { CircleUserRound } from 'lucide-react';
 import { Compass } from 'lucide-react';
@@ -8,8 +8,12 @@ import { CodeXml } from 'lucide-react';
 import { Images } from 'lucide-react';
 import { Mic } from 'lucide-react';
 import { Send } from 'lucide-react';
+import { Context } from '../../context/context';
 
 const Main = () => {
+
+  const{onSent, recentPrompt, showResult, loading, resultData, setInput, input} = useContext(Context)
+
   return (
     <div className='main'>
       <div className='nav'>
@@ -41,11 +45,11 @@ const Main = () => {
         </div>
         <div className="main-bottom">
           <div className="search-box">
-            <input type="text" placeholder='Enter your prompt here'/>
+            <input onChange={(e)=> setInput(e.target.value)} value={input} type="text" placeholder='Enter your prompt here'/>
             <div>
             <Images />
             <Mic />
-            <Send />  
+            < Send onClick={()=> onSent()}/>  
             </div>
           </div>
           <p className="bottom-info">Gemini may display inaccurate information, so always verify important details from reliable sources.</p>
