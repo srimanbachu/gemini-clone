@@ -8,8 +8,8 @@ import { CodeXml } from 'lucide-react';
 import { Images } from 'lucide-react';
 import { Mic } from 'lucide-react';
 import { Send } from 'lucide-react';
+import { Bubbles } from 'lucide-react';
 import { Context } from '../../context/context';
-
 const Main = () => {
 
   const{onSent, recentPrompt, showResult, loading, resultData, setInput, input} = useContext(Context)
@@ -21,7 +21,11 @@ const Main = () => {
         <CircleUserRound />
       </div>
       <div className="main-container">
-        <div className="greet">
+
+        {!showResult
+        ?
+        <>
+                <div className="greet">
           <p><span>Hello, dev.</span></p>
           <p>How can I help you today?</p>
         </div>
@@ -43,6 +47,30 @@ const Main = () => {
             <CodeXml className='cardel' />
           </div>
         </div>
+        
+        </>
+        :<div className='result'>
+<div className="result-title">
+  <CircleUserRound className='userimg'/>
+  <p>{recentPrompt}</p>
+</div>
+
+<div className="result-data">
+  <Bubbles />
+  {loading?
+  <div className="loader">
+      <hr />
+      <hr />
+      <hr />
+  </div>
+  :  <p dangerouslySetInnerHTML={{ __html: resultData }} />
+  }
+
+</div>
+        </div>
+        }
+
+
         <div className="main-bottom">
           <div className="search-box">
             <input onChange={(e)=> setInput(e.target.value)} value={input} type="text" placeholder='Enter your prompt here'/>

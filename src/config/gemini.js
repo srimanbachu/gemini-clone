@@ -2,7 +2,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // FIX: Only the actual key should be inside the quotes
-const genAI = new GoogleGenerativeAI("AIzaSyD5UbSO01ZYZst8BH3entaJyHbkrqrCcGI");
+const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
   
 async function runChat(prompt) {
   try {
