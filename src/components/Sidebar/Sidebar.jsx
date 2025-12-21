@@ -1,48 +1,63 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Sidebar.css';
-import { Menu } from 'lucide-react';
-import { Plus } from 'lucide-react';
-import { MessageSquare } from 'lucide-react';
-import { FileQuestionMark } from 'lucide-react';
-import { History } from 'lucide-react';
-import { Settings } from 'lucide-react';
+import { Menu, Plus, FileQuestionMark, History, Settings } from 'lucide-react';
+import { Context } from '../../context/context';
 
 const Sidebar = () => {
-    const [extended, setExtended] = useState(false)
+
+    const [extended, setExtended] = useState(false);
+    const { onSent, prevPrompts, setRecentPrompt, newChat } = useContext(Context); // ✅ FIXED
+
+    const loadPrompt = async (prompt) => {
+        setRecentPrompt(prompt);
+        await onSent(prompt);
+    };
+
     return (
         <div className='sidebar'>
             <div className='top'>
-                <Menu className='menu' onClick={() => setExtended(prev =>!prev)} />
-                <div className="new-chat">
+                <Menu className='menu' onClick={() => setExtended(prev => !prev)} />
+
+                <div onClick={()=>newChat()} className="new-chat">
                     <Plus color="#222020" />
-                    {extended ? <p>New chat</p> : null}
+                    {extended && <p className='newchat'>New chat</p>}
                 </div>
-                {extended ?
+
+                {extended && (
                     <div className="recent">
                         <p className="recent-title">Recent</p>
-                        <div className="recent-entry">
-                            <MessageSquare />
-                            <p>what is react ...</p>
-                        </div>
+
+                        {prevPrompts.map((item, index) => (
+                            <div
+                                key={index}  // ✅ FIXED
+                                onClick={() => loadPrompt(item)}
+                                className="recent-entry"
+                            >
+                                <p className='history'>{item.slice(0, 18)} ...</p>
+                            </div>
+                        ))}
                     </div>
-                    : null
-                }
+                )}
             </div>
+
             <div className="bottom">
                 <div className="bottom-item recent-entry">
                     <FileQuestionMark />
-                   {extended?<p>Help</p>:null}
+                    {extended && <p>Help</p>}
                 </div>
+
                 <div className="bottom-item recent-entry">
                     <History />
-                   {extended?<p>Activity</p>:null}
+                    {extended && <p>Activity</p>}
                 </div>
+
                 <div className="bottom-item recent-entry">
                     <Settings className='settings' />
-                    {extended?<p>Setting</p>:null}  
+                    {extended && <p>Setting</p>}
                 </div>
             </div>
         </div>
-    )
-}
-export default Sidebar
+    );
+};
+
+export default Sidebar;

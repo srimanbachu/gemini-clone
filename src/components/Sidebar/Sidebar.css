@@ -9,6 +9,7 @@
 
 .sidebar svg{
     width: 20px;
+    color: gray;
 }
 
 .sidebar .menu{
@@ -22,8 +23,8 @@
     margin-top: 50px;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 15px;
+    gap: 30px;
+    padding: 10px 20px;
     background-color: #e6eaf1;
     border-radius: 50px;
     font-size: 14px;
@@ -44,6 +45,28 @@
     padding: 10px;
     cursor: pointer;
     color: gray;
-
 }
 
+.history{
+    padding-top: 6px;
+    padding-right: 10px;
+    padding-left: 15px;
+    padding-bottom: 6px;
+    cursor: pointer;
+}
+
+.newchat{
+    padding-left: 10px;
+    padding-right: 50px;
+}
+
+.recent-title{
+    padding-top: 30px;
+    color: gray;
+}
+
+.new-chat:hover{
+    color: rgba(255, 255, 255, 0.541) ;
+    background-color: #0002067d;
+
+}
