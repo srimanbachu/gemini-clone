@@ -77,7 +77,7 @@ const Main = () => {
             <div>
             <Images />
             <Mic />
-            < Send onClick={()=> onSent()}/>  
+            < Send className='send' onClick={()=> onSent()}/>  
             </div>
           </div>
           <p className="bottom-info">Gemini may display inaccurate information, so always verify important details from reliable sources.</p>

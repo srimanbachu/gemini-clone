@@ -186,3 +186,12 @@
         background-position: 800px 0px;
     }
 }
+
+.send {
+    transition: transform 0.25s ease;
+  }
+  
+  .send:hover {
+    transform: translateY(-2px) scale(1.05);
+  }
+  
